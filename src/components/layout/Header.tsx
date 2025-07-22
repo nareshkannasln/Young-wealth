@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Scaling as Seedling, LogOut } from 'lucide-react';
+import { TrendingUp, LogOut } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 
 export const Header: React.FC = () => {
@@ -16,11 +16,11 @@ export const Header: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-3">
             <div className="bg-emerald-500 p-2 rounded-lg">
-              <Seedling className="h-6 w-6 text-white" />
+              <TrendingUp className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">FinSeed</h1>
-              <p className="text-xs text-gray-500">Plant Your Future, Save Today.</p>
+              <h1 className="text-xl font-bold text-gray-900">Young Wealth</h1>
+              <p className="text-xs text-gray-500">Start Easy, Grow Wealthy</p>
             </div>
           </Link>
 

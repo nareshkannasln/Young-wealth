@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, Scaling as Seedling } from 'lucide-react';
+import { Eye, EyeOff, TrendingUp } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { SignupData, UserRole, SchoolType } from '../../types/auth';
 
@@ -83,14 +83,14 @@ export const Signup: React.FC = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <div className="bg-emerald-500 p-3 rounded-xl">
-            <Seedling className="h-8 w-8 text-white" />
+            <TrendingUp className="h-8 w-8 text-white" />
           </div>
         </div>
         <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
-          Join FinSeed Today
+          Join Young Wealth Today
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
-          Plant Your Future, Save Today.
+          Start Easy, Grow Wealthy
         </p>
       </div>
 

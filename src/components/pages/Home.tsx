@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Scaling as Seedling, BookOpen, Target, TrendingUp, Users } from 'lucide-react';
+import { TrendingUp, BookOpen, Target, BarChart3, Users, Phone, Mail } from 'lucide-react';
 
 export const Home: React.FC = () => {
   return (
@@ -10,14 +10,14 @@ export const Home: React.FC = () => {
         <div className="text-center">
           <div className="flex justify-center mb-8">
             <div className="bg-emerald-500 p-4 rounded-2xl">
-              <Seedling className="h-12 w-12 text-white" />
+              <TrendingUp className="h-12 w-12 text-white" />
             </div>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            Welcome to <span className="text-emerald-500">FinSeed</span>
+            Welcome to <span className="text-emerald-500">Young Wealth</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8">
-            Plant Your Future, Save Today.
+            Start Easy, Grow Wealthy
           </p>
           <p className="text-lg text-gray-500 mb-12 max-w-3xl mx-auto">
             Empowering the next generation with financial literacy. Whether you're a school student, 
@@ -73,7 +73,7 @@ export const Home: React.FC = () => {
             </div>
 
             <div className="text-center p-6 bg-orange-50 rounded-xl">
-              <TrendingUp className="h-12 w-12 text-orange-500 mx-auto mb-4" />
+              <BarChart3 className="h-12 w-12 text-orange-500 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-gray-900 mb-3">Employees</h3>
               <p className="text-gray-600">
                 Advanced financial management, investment strategies, and 
@@ -109,18 +109,71 @@ export const Home: React.FC = () => {
       <div className="bg-gray-50 py-20">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Ready to Plant Your Financial Future?
+            Ready to Start Your Wealth Journey?
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            Join thousands of students and professionals who are building better financial habits with FinSeed.
+            Join thousands of students and professionals who are building better financial habits with Young Wealth.
           </p>
           <Link
             to="/signup"
             className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors shadow-lg hover:shadow-xl inline-flex items-center"
           >
             <Users className="h-5 w-5 mr-2" />
-            Join FinSeed Today
+            Join Young Wealth Today
           </Link>
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <div className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Get in Touch
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Have questions? Our team is here to help you start your financial journey
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-emerald-50 rounded-xl p-8">
+              <div className="flex items-center mb-6">
+                <Phone className="h-8 w-8 text-emerald-500 mr-3" />
+                <h3 className="text-xl font-bold text-gray-900">Call Us</h3>
+              </div>
+              <div className="space-y-3">
+                <div>
+                  <p className="font-medium text-gray-900">Yeshwin</p>
+                  <p className="text-emerald-600">+91 63825 93242</p>
+                </div>
+                <div>
+                  <p className="font-medium text-gray-900">Dhanushkumar</p>
+                  <p className="text-emerald-600">+91 93608 08860</p>
+                </div>
+                <div>
+                  <p className="font-medium text-gray-900">Sudhiksh Kumar</p>
+                  <p className="text-emerald-600">+91 73589 43662</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-blue-50 rounded-xl p-8">
+              <div className="flex items-center mb-6">
+                <Mail className="h-8 w-8 text-blue-500 mr-3" />
+                <h3 className="text-xl font-bold text-gray-900">Email Us</h3>
+              </div>
+              <div>
+                <p className="text-gray-600 mb-2">For general inquiries and support:</p>
+                <a 
+                  href="mailto:youngwealthlearning@gmail.com"
+                  className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                >
+                  youngwealthlearning@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

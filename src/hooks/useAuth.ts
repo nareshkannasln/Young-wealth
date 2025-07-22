@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { User, AuthState, LoginCredentials, SignupData } from '../types/auth';
 
-const STORAGE_KEY = 'finseed_auth';
-const USERS_KEY = 'finseed_users';
+const STORAGE_KEY = 'youngwealth_auth';
+const USERS_KEY = 'youngwealth_users';
 
 // Mock users for development
 const mockUsers: User[] = [
