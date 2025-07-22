@@ -51,6 +51,7 @@ export const useAuth = () => {
         });
       } catch (error) {
         console.error('Failed to parse auth state:', error);
+        localStorage.removeItem(STORAGE_KEY);
         setAuthState(prev => ({ ...prev, loading: false }));
       }
     } else {

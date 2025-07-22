@@ -16,6 +16,20 @@ function App() {
   const { isAuthenticated, user } = useAuth();
   const [admin, setAdmin] = React.useState(null);
 
+  // Helper function to get dashboard route
+  const getDashboardRoute = (userRole: string) => {
+    switch (userRole) {
+      case 'school-student':
+        return '/dashboard/school';
+      case 'college-student':
+        return '/dashboard/college';
+      case 'employee':
+        return '/dashboard/employee';
+      default:
+        return '/dashboard/school';
+    }
+  };
+
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
@@ -27,7 +41,7 @@ function App() {
             path="/login" 
             element={
               isAuthenticated ? (
-                <Navigate to={`/dashboard/${user?.role === 'school-student' ? 'school' : user?.role === 'college-student' ? 'college' : 'employee'}`} replace />
+                <Navigate to={getDashboardRoute(user?.role || 'school-student')} replace />
               ) : (
                 <Login />
               )
@@ -37,7 +51,7 @@ function App() {
             path="/signup" 
             element={
               isAuthenticated ? (
-                <Navigate to={`/dashboard/${user?.role === 'school-student' ? 'school' : user?.role === 'college-student' ? 'college' : 'employee'}`} replace />
+                <Navigate to={getDashboardRoute(user?.role || 'school-student')} replace />
               ) : (
                 <Signup />
               )
@@ -97,10 +111,7 @@ function App() {
             path="/dashboard" 
             element={
               <ProtectedRoute>
-                <Navigate 
-                  to={`/dashboard/${user?.role === 'school-student' ? 'school' : user?.role === 'college-student' ? 'college' : 'employee'}`} 
-                  replace 
-                />
+                <Navigate to={getDashboardRoute(user?.role || 'school-student')} replace />
               </ProtectedRoute>
             } 
           />
