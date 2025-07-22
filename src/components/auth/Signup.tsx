@@ -79,17 +79,17 @@ export const Signup: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-blue-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-teal-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <div className="bg-emerald-500 p-3 rounded-xl">
+          <div className="bg-navy-700 p-3 rounded-xl">
             <TrendingUp className="h-8 w-8 text-white" />
           </div>
         </div>
-        <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
+        <h2 className="mt-6 text-center text-3xl font-bold text-gray-800">
           Join Young Wealth Today
         </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
+        <p className="mt-2 text-center text-sm text-gray-500">
           Start Easy, Grow Wealthy
         </p>
       </div>
@@ -98,7 +98,7 @@ export const Signup: React.FC = () => {
         <div className="bg-white py-8 px-4 shadow-xl rounded-lg border border-gray-100 sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="fullName" className="block text-sm font-medium text-gray-600">
                 Full Name
               </label>
               <div className="mt-1">
@@ -109,7 +109,7 @@ export const Signup: React.FC = () => {
                   autoComplete="name"
                   value={formData.fullName}
                   onChange={handleInputChange}
-                  className={`appearance-none block w-full px-3 py-3 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm ${
+                  className={`appearance-none block w-full px-3 py-3 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm ${
                     errors.fullName ? 'border-red-300' : 'border-gray-300'
                   }`}
                   placeholder="Enter your full name"
@@ -121,7 +121,7 @@ export const Signup: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-600">
                 Email address
               </label>
               <div className="mt-1">
@@ -132,7 +132,7 @@ export const Signup: React.FC = () => {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`appearance-none block w-full px-3 py-3 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm ${
+                  className={`appearance-none block w-full px-3 py-3 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm ${
                     errors.email ? 'border-red-300' : 'border-gray-300'
                   }`}
                   placeholder="Enter your email"
@@ -144,7 +144,7 @@ export const Signup: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-600">
                 Password
               </label>
               <div className="mt-1 relative">
@@ -155,7 +155,7 @@ export const Signup: React.FC = () => {
                   autoComplete="new-password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`appearance-none block w-full px-3 py-3 pr-10 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm ${
+                  className={`appearance-none block w-full px-3 py-3 pr-10 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm ${
                     errors.password ? 'border-red-300' : 'border-gray-300'
                   }`}
                   placeholder="Create a password (min 8 characters)"
@@ -178,7 +178,7 @@ export const Signup: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-600">
                 Confirm Password
               </label>
               <div className="mt-1 relative">
@@ -189,7 +189,7 @@ export const Signup: React.FC = () => {
                   autoComplete="new-password"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
-                  className={`appearance-none block w-full px-3 py-3 pr-10 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm ${
+                  className={`appearance-none block w-full px-3 py-3 pr-10 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm ${
                     errors.confirmPassword ? 'border-red-300' : 'border-gray-300'
                   }`}
                   placeholder="Confirm your password"
@@ -212,7 +212,7 @@ export const Signup: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="role" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="role" className="block text-sm font-medium text-gray-600">
                 I am a
               </label>
               <div className="mt-1">
@@ -221,7 +221,7 @@ export const Signup: React.FC = () => {
                   name="role"
                   value={formData.role}
                   onChange={handleInputChange}
-                  className="block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm"
+                  className="block w-full px-3 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm"
                 >
                   <option value="school-student">School Student</option>
                   <option value="college-student">College Student</option>
@@ -232,7 +232,7 @@ export const Signup: React.FC = () => {
 
             {formData.role === 'school-student' && (
               <div>
-                <label htmlFor="schoolType" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="schoolType" className="block text-sm font-medium text-gray-600">
                   School Type
                 </label>
                 <div className="mt-2 space-y-2">
@@ -244,9 +244,9 @@ export const Signup: React.FC = () => {
                       value="government"
                       checked={formData.schoolType === 'government'}
                       onChange={handleInputChange}
-                      className="h-4 w-4 text-emerald-500 focus:ring-emerald-500 border-gray-300"
+                      className="h-4 w-4 text-teal-500 focus:ring-teal-500 border-gray-300"
                     />
-                    <label htmlFor="government" className="ml-3 block text-sm text-gray-700">
+                    <label htmlFor="government" className="ml-3 block text-sm text-gray-600">
                       Government School
                     </label>
                   </div>
@@ -258,9 +258,9 @@ export const Signup: React.FC = () => {
                       value="private"
                       checked={formData.schoolType === 'private'}
                       onChange={handleInputChange}
-                      className="h-4 w-4 text-emerald-500 focus:ring-emerald-500 border-gray-300"
+                      className="h-4 w-4 text-teal-500 focus:ring-teal-500 border-gray-300"
                     />
-                    <label htmlFor="private" className="ml-3 block text-sm text-gray-700">
+                    <label htmlFor="private" className="ml-3 block text-sm text-gray-600">
                       Private School
                     </label>
                   </div>
@@ -278,16 +278,16 @@ export const Signup: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-emerald-500 hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-navy-700 hover:bg-navy-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navy-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isLoading ? 'Creating account...' : 'Create account'}
               </button>
             </div>
 
             <div className="text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-500">
                 Already have an account?{' '}
-                <Link to="/login" className="font-medium text-emerald-500 hover:text-emerald-600 transition-colors">
+                <Link to="/login" className="font-medium text-teal-600 hover:text-teal-700 transition-colors">
                   Sign in
                 </Link>
               </p>

@@ -15,24 +15,24 @@ export const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-3">
-            <div className="bg-emerald-500 p-2 rounded-lg">
+            <div className="bg-navy-700 p-2 rounded-lg">
               <TrendingUp className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Young Wealth</h1>
-              <p className="text-xs text-gray-500">Start Easy, Grow Wealthy</p>
+              <h1 className="text-xl font-bold text-gray-800">Young Wealth</h1>
+              <p className="text-xs text-gray-600">Start Easy, Grow Wealthy</p>
             </div>
           </Link>
 
           <nav className="flex items-center space-x-4">
             {isAuthenticated ? (
               <div className="flex items-center space-x-4">
-                <span className="text-sm text-gray-700">
+                <span className="text-sm text-gray-600">
                   Welcome, <span className="font-semibold">{user?.fullName}</span>
                 </span>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+                  className="flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors"
                 >
                   <LogOut className="h-4 w-4" />
                   <span>Logout</span>
@@ -42,13 +42,13 @@ export const Header: React.FC = () => {
               <div className="flex items-center space-x-4">
                 <Link
                   to="/login"
-                  className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+                  className="text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors"
                 >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="bg-navy-700 hover:bg-navy-800 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Sign Up
                 </Link>
