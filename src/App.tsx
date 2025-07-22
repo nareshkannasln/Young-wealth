@@ -4,6 +4,8 @@ import { Header } from './components/layout/Header';
 import { Home } from './components/pages/Home';
 import { Login } from './components/auth/Login';
 import { Signup } from './components/auth/Signup';
+import { AdminLogin } from './components/admin/AdminLogin';
+import { AdminDashboard } from './components/admin/AdminDashboard';
 import { SchoolDashboard } from './components/dashboard/SchoolDashboard';
 import { CollegeDashboard } from './components/dashboard/CollegeDashboard';
 import { EmployeeDashboard } from './components/dashboard/EmployeeDashboard';
@@ -12,11 +14,12 @@ import { useAuth } from './hooks/useAuth';
 
 function App() {
   const { isAuthenticated, user } = useAuth();
+  const [admin, setAdmin] = React.useState(null);
 
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-        <Header />
+        {!window.location.pathname.startsWith('/admin') && <Header />}
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
@@ -37,6 +40,28 @@ function App() {
                 <Navigate to={`/dashboard/${user?.role === 'school-student' ? 'school' : user?.role === 'college-student' ? 'college' : 'employee'}`} replace />
               ) : (
                 <Signup />
+              )
+            } 
+          />
+
+          {/* Admin Routes */}
+          <Route 
+            path="/admin" 
+            element={
+              admin ? (
+                <Navigate to="/admin/dashboard" replace />
+              ) : (
+                <AdminLogin onLogin={setAdmin} />
+              )
+            } 
+          />
+          <Route 
+            path="/admin/dashboard" 
+            element={
+              admin ? (
+                <AdminDashboard />
+              ) : (
+                <Navigate to="/admin" replace />
               )
             } 
           />
