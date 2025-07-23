@@ -23,6 +23,14 @@ const mockUsers: User[] = [
     role: 'college-student',
     createdAt: new Date(),
   },
+  {
+    id: 'admin',
+    fullName: 'Admin',
+    email: 'admin@youngwealth.com',
+    password: 'admin123',
+    role: 'admin',
+    createdAt: new Date(),
+  },
 ];
 
 export const useAuth = () => {
@@ -51,10 +59,7 @@ export const useAuth = () => {
         });
       } catch (error) {
         console.error('Failed to parse auth state:', error);
-<<<<<<< HEAD
-=======
         localStorage.removeItem(STORAGE_KEY);
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
         setAuthState(prev => ({ ...prev, loading: false }));
       }
     } else {

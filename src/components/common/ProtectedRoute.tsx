@@ -29,16 +29,6 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   }
 
   if (requiredRole && user?.role !== requiredRole) {
-    // Redirect to user's appropriate dashboard
-<<<<<<< HEAD
-    const dashboardRoute = user?.role === 'school-student' 
-      ? '/dashboard/school'
-      : user?.role === 'college-student'
-      ? '/dashboard/college'
-      : '/dashboard/employee';
-    
-    return <Navigate to={dashboardRoute} replace />;
-=======
     const getDashboardRoute = (role: string) => {
       switch (role) {
         case 'school-student':
@@ -51,9 +41,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
           return '/dashboard/school';
       }
     };
-    
     return <Navigate to={getDashboardRoute(user?.role || 'school-student')} replace />;
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
   }
 
   return <>{children}</>;

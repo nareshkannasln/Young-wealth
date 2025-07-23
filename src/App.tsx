@@ -4,22 +4,16 @@ import { Header } from './components/layout/Header';
 import { Home } from './components/pages/Home';
 import { Login } from './components/auth/Login';
 import { Signup } from './components/auth/Signup';
-<<<<<<< HEAD
-=======
 import { AdminLogin } from './components/admin/AdminLogin';
 import { AdminDashboard } from './components/admin/AdminDashboard';
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
 import { SchoolDashboard } from './components/dashboard/SchoolDashboard';
 import { CollegeDashboard } from './components/dashboard/CollegeDashboard';
 import { EmployeeDashboard } from './components/dashboard/EmployeeDashboard';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
+import { LearningSection } from './components/pages/LearningSection';
+import { ExpenseTracker } from './components/pages/ExpenseTracker';
+import { PaymentPage } from './components/pages/PaymentPage';
 import { useAuth } from './hooks/useAuth';
-<<<<<<< HEAD
-import { AdminCourseManager } from './components/admin/AdminCourseManager';
-
-function App() {
-  const { isAuthenticated, user } = useAuth();
-=======
 
 function App() {
   const { isAuthenticated, user } = useAuth();
@@ -38,16 +32,11 @@ function App() {
         return '/dashboard/school';
     }
   };
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
 
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-<<<<<<< HEAD
-        <Header />
-=======
         {!window.location.pathname.startsWith('/admin') && <Header />}
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
@@ -55,11 +44,7 @@ function App() {
             path="/login" 
             element={
               isAuthenticated ? (
-<<<<<<< HEAD
-                <Navigate to={`/dashboard/${user?.role === 'school-student' ? 'school' : user?.role === 'college-student' ? 'college' : 'employee'}`} replace />
-=======
                 <Navigate to={getDashboardRoute(user?.role || 'school-student')} replace />
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
               ) : (
                 <Login />
               )
@@ -69,19 +54,13 @@ function App() {
             path="/signup" 
             element={
               isAuthenticated ? (
-<<<<<<< HEAD
-                <Navigate to={`/dashboard/${user?.role === 'school-student' ? 'school' : user?.role === 'college-student' ? 'college' : 'employee'}`} replace />
-=======
                 <Navigate to={getDashboardRoute(user?.role || 'school-student')} replace />
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
               ) : (
                 <Signup />
               )
             } 
           />
 
-<<<<<<< HEAD
-=======
           {/* Admin Routes */}
           <Route 
             path="/admin" 
@@ -104,7 +83,19 @@ function App() {
             } 
           />
 
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
+          {/* Learning Section (all users) */}
+          <Route path="/learn" element={<LearningSection />} />
+
+          {/* Expense Tracker (college students only) */}
+          <Route path="/expenses" element={
+            <ProtectedRoute requiredRole="college-student">
+              <ExpenseTracker />
+            </ProtectedRoute>
+          } />
+
+          {/* Payment Page (all users) */}
+          <Route path="/payment" element={<PaymentPage />} />
+
           {/* Protected Dashboard Routes */}
           <Route 
             path="/dashboard/school" 
@@ -136,24 +127,11 @@ function App() {
             path="/dashboard" 
             element={
               <ProtectedRoute>
-<<<<<<< HEAD
-                <Navigate 
-                  to={`/dashboard/${user?.role === 'school-student' ? 'school' : user?.role === 'college-student' ? 'college' : 'employee'}`} 
-                  replace 
-                />
-=======
                 <Navigate to={getDashboardRoute(user?.role || 'school-student')} replace />
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
               </ProtectedRoute>
             } 
           />
 
-<<<<<<< HEAD
-          {/* Admin Route */}
-          <Route path="/admin" element={<AdminCourseManager />} />
-
-=======
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
           {/* Catch all route */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

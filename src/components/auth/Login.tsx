@@ -166,6 +166,7 @@ export const Login: React.FC = () => {
                   <option value="school-student">School Student</option>
                   <option value="college-student">College Student</option>
                   <option value="employee">Employee (Coming Soon)</option>
+                  <option value="admin">Admin</option>
                 </select>
               </div>
             </div>
@@ -202,6 +203,7 @@ export const Login: React.FC = () => {
               <div className="space-y-1 text-xs text-gray-500">
                 <p><strong>School:</strong> john@student.com / password123</p>
                 <p><strong>College:</strong> jane@college.com / password123</p>
+                <p><strong>Admin:</strong> admin@youngwealth.com / admin123</p>
               </div>
             </div>
           </div>

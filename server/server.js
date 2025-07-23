@@ -1,10 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const connectDB = require('./db/connect');
 
 const authRoutes = require('./routes/auth');
 const courseRoutes = require('./routes/courses');
 const adminRoutes = require('./routes/admin');
+
+
+// Connect to MongoDB
+connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 5000;

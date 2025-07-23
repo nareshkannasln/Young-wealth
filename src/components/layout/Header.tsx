@@ -1,109 +1,78 @@
 import React from 'react';
-<<<<<<< HEAD
 import { Link, useLocation } from 'react-router-dom';
-=======
-import { Link } from 'react-router-dom';
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
 import { TrendingUp, LogOut } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 
 export const Header: React.FC = () => {
   const { isAuthenticated, user, logout } = useAuth();
-<<<<<<< HEAD
   const location = useLocation();
-=======
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
-
-  const handleLogout = () => {
-    logout();
-  };
 
   return (
-<<<<<<< HEAD
-    <header className="bg-white shadow mb-6">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold text-blue-700">
+    <header className="bg-white shadow">
+      <div className="container mx-auto flex items-center justify-between py-4 px-6">
+        <Link to="/" className="flex items-center gap-2 text-xl font-bold text-navy-700">
+          <TrendingUp className="w-6 h-6" />
           Young Wealth
         </Link>
-        <nav className="flex items-center gap-4">
-          <Link
-            to="/"
-            className={
-              location.pathname === '/'
-                ? 'font-semibold text-blue-600'
-                : ''
-            }
-          >
-            Home
-          </Link>
-          {!isAuthenticated && <Link to="/login">Login</Link>}
-          {!isAuthenticated && <Link to="/signup">Signup</Link>}
-          {isAuthenticated && user?.role === 'school-student' && (
-            <Link to="/dashboard/school">School Dashboard</Link>
-          )}
-          {isAuthenticated && user?.role === 'college-student' && (
-            <Link to="/dashboard/college">College Dashboard</Link>
-          )}
-          {isAuthenticated && user?.role === 'employee' && (
-            <Link to="/dashboard/employee">Employee Dashboard</Link>
-          )}
-          {isAuthenticated && user?.role === 'admin' && <Link to="/admin">Admin</Link>}
-          {isAuthenticated && (
-            <button
-              onClick={handleLogout}
-              className="ml-2 text-red-600"
-            >
-              Logout
-            </button>
-          )}
-        </nav>
-=======
-    <header className="bg-white shadow-md border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="bg-navy-700 p-2 rounded-lg">
-              <TrendingUp className="h-6 w-6 text-white" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-gray-800">Young Wealth</h1>
-              <p className="text-xs text-gray-600">Start Easy, Grow Wealthy</p>
-            </div>
-          </Link>
-
-          <nav className="flex items-center space-x-4">
+        <nav>
+          <ul className="flex items-center gap-6">
+            {/* Always show Learn */}
+            <li>
+              <Link to="/learn" className={location.pathname === '/learn' ? 'active' : ''}>
+                Learn
+              </Link>
+            </li>
+            {/* Show Expense Tracker for college students */}
+            {user?.role === 'college-student' && (
+              <li>
+                <Link to="/expenses" className={location.pathname === '/expenses' ? 'active' : ''}>
+                  Expense Tracker
+                </Link>
+              </li>
+            )}
+            {/* Show Payment for all except admin */}
+            {user?.role !== 'admin' && (
+              <li>
+                <Link to="/payment" className={location.pathname === '/payment' ? 'active' : ''}>
+                  Payment
+                </Link>
+              </li>
+            )}
+            {/* Dashboard/Admin Dashboard link by role */}
+            {user?.role === 'admin' ? (
+              <li>
+                <Link to="/admin/dashboard" className={location.pathname === '/admin/dashboard' ? 'active' : ''}>
+                  Admin Dashboard
+                </Link>
+              </li>
+            ) : user ? (
+              <li>
+                <Link to="/dashboard" className={location.pathname === '/dashboard' ? 'active' : ''}>
+                  Dashboard
+                </Link>
+              </li>
+            ) : null}
             {isAuthenticated ? (
-              <div className="flex items-center space-x-4">
-                <span className="text-sm text-gray-600">
-                  Welcome, <span className="font-semibold">{user?.fullName}</span>
-                </span>
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors"
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span>Logout</span>
-                </button>
-              </div>
+              <>
+                <li>
+                  <span>{user?.fullName}</span>
+                </li>
+                <li>
+                  <button onClick={logout} className="flex items-center gap-1">
+                    <LogOut />
+                    Logout
+                  </button>
+                </li>
+              </>
             ) : (
-              <div className="flex items-center space-x-4">
-                <Link
-                  to="/login"
-                  className="text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors"
-                >
+              <li>
+                <Link to="/login" className={location.pathname === '/login' ? 'active' : ''}>
                   Login
                 </Link>
-                <Link
-                  to="/signup"
-                  className="bg-navy-700 hover:bg-navy-800 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-                >
-                  Sign Up
-                </Link>
-              </div>
+              </li>
             )}
-          </nav>
-        </div>
->>>>>>> 93e9b760fcf5f6b33fd85575eb3c5948149cf036
+          </ul>
+        </nav>
       </div>
     </header>
   );

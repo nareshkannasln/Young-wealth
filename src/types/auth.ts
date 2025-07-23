@@ -1,4 +1,4 @@
-export type UserRole = 'school-student' | 'college-student' | 'employee';
+export type UserRole = 'school-student' | 'college-student' | 'employee' | 'admin';
 export type SchoolType = 'government' | 'private';
 
 export interface User {
