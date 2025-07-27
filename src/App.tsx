@@ -1,142 +1,84 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/layout/Header';
 import { Home } from './components/pages/Home';
 import { Login } from './components/auth/Login';
 import { Signup } from './components/auth/Signup';
 import { AdminLogin } from './components/admin/AdminLogin';
 import { AdminDashboard } from './components/admin/AdminDashboard';
+import { AdminCourseManager } from './components/admin/AdminCourseManager';
 import { SchoolDashboard } from './components/dashboard/SchoolDashboard';
 import { CollegeDashboard } from './components/dashboard/CollegeDashboard';
 import { EmployeeDashboard } from './components/dashboard/EmployeeDashboard';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
+import { PublicRoute } from './components/common/PublicRoute';
 import { LearningSection } from './components/pages/LearningSection';
 import { ExpenseTracker } from './components/pages/ExpenseTracker';
 import { PaymentPage } from './components/pages/PaymentPage';
-import { useAuth } from './hooks/useAuth';
+import { AuthProvider } from './context/AuthContext';
+import { ROUTES } from './utils/constants';
 
 function App() {
-  const { isAuthenticated, user } = useAuth();
-  const [admin, setAdmin] = React.useState(null);
-
-  // Helper function to get dashboard route
-  const getDashboardRoute = (userRole: string) => {
-    switch (userRole) {
-      case 'school-student':
-        return '/dashboard/school';
-      case 'college-student':
-        return '/dashboard/college';
-      case 'employee':
-        return '/dashboard/employee';
-      default:
-        return '/dashboard/school';
-    }
-  };
-
   return (
-    <Router>
-      <div className="min-h-screen bg-gray-50">
-        {!window.location.pathname.startsWith('/admin') && <Header />}
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Home />} />
-          <Route 
-            path="/login" 
-            element={
-              isAuthenticated ? (
-                <Navigate to={getDashboardRoute(user?.role || 'school-student')} replace />
-              ) : (
-                <Login />
-              )
-            } 
-          />
-          <Route 
-            path="/signup" 
-            element={
-              isAuthenticated ? (
-                <Navigate to={getDashboardRoute(user?.role || 'school-student')} replace />
-              ) : (
-                <Signup />
-              )
-            } 
-          />
-
-          {/* Admin Routes */}
-          <Route 
-            path="/admin" 
-            element={
-              admin ? (
-                <Navigate to="/admin/dashboard" replace />
-              ) : (
-                <AdminLogin onLogin={setAdmin} />
-              )
-            } 
-          />
-          <Route 
-            path="/admin/dashboard" 
-            element={
-              admin ? (
-                <AdminDashboard />
-              ) : (
-                <Navigate to="/admin" replace />
-              )
-            } 
-          />
-
-          {/* Learning Section (all users) */}
-          <Route path="/learn" element={<LearningSection />} />
-
-          {/* Expense Tracker (college students only) */}
-          <Route path="/expenses" element={
-            <ProtectedRoute requiredRole="college-student">
-              <ExpenseTracker />
-            </ProtectedRoute>
-          } />
-
-          {/* Payment Page (all users) */}
-          <Route path="/payment" element={<PaymentPage />} />
-
-          {/* Protected Dashboard Routes */}
-          <Route 
-            path="/dashboard/school" 
-            element={
+    <AuthProvider>
+      <Router>
+        <div className="min-h-screen bg-gray-50">
+          {!window.location.pathname.startsWith('/admin') && <Header />}
+          <Routes>
+            {/* Public Routes */}
+            <Route path={ROUTES.HOME} element={<Home />} />
+            <Route path={ROUTES.AUTH.LOGIN} element={<PublicRoute><Login /></PublicRoute>} />
+            <Route path={ROUTES.AUTH.SIGNUP} element={<PublicRoute><Signup /></PublicRoute>} />
+            <Route path={ROUTES.ADMIN.LOGIN} element={<PublicRoute><AdminLogin /></PublicRoute>} />
+            
+            {/* Protected Dashboard Routes */}
+            <Route path={ROUTES.DASHBOARD.SCHOOL} element={
               <ProtectedRoute requiredRole="school-student">
                 <SchoolDashboard />
               </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/dashboard/college" 
-            element={
+            } />
+            <Route path={ROUTES.DASHBOARD.COLLEGE} element={
               <ProtectedRoute requiredRole="college-student">
                 <CollegeDashboard />
               </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/dashboard/employee" 
-            element={
+            } />
+            <Route path={ROUTES.DASHBOARD.EMPLOYEE} element={
               <ProtectedRoute requiredRole="employee">
                 <EmployeeDashboard />
               </ProtectedRoute>
-            } 
-          />
+            } />
 
-          {/* Default dashboard redirect */}
-          <Route 
-            path="/dashboard" 
-            element={
-              <ProtectedRoute>
-                <Navigate to={getDashboardRoute(user?.role || 'school-student')} replace />
+            {/* Admin Routes */}
+            <Route path={ROUTES.ADMIN.DASHBOARD} element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminDashboard />
               </ProtectedRoute>
-            } 
-          />
+            } />
+            <Route path={ROUTES.ADMIN.COURSE_MANAGER} element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminCourseManager />
+              </ProtectedRoute>
+            } />
 
-          {/* Catch all route */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </div>
-    </Router>
+            {/* Feature Routes */}
+            <Route path={ROUTES.LEARNING} element={
+              <ProtectedRoute>
+                <LearningSection />
+              </ProtectedRoute>
+            } />
+            <Route path={ROUTES.PAYMENT} element={
+              <ProtectedRoute>
+                <PaymentPage />
+              </ProtectedRoute>
+            } />
+            <Route path={ROUTES.EXPENSE_TRACKER} element={
+              <ProtectedRoute>
+                <ExpenseTracker />
+              </ProtectedRoute>
+            } /> 
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 
